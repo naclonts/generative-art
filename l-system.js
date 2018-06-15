@@ -46,10 +46,10 @@ window.onload = async function() {
     pos = new Vector(width / 2, height / 2)
 
     setup(ctx)
-    let start = 'FX' // initial rule
+    let axiom = 'FX' // initial rule
     ctx.moveTo(pos.x, pos.y)
     ctx.font = '16px sans-serif'
-    await draw(ctx, start)
+    await draw(ctx, axiom)
     console.log('done')
 }
 
@@ -73,7 +73,7 @@ async function draw(ctx, instruction) {
     // do drawing actions
     for (let c of instruction) {
         if (c == 'F') {
-            // await wait(10) // 'animate' drawing
+            await wait(10) // 'animate' drawing
             ctx.beginPath()
             ctx.moveTo(pos.x, pos.y)
 
