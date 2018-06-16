@@ -14,7 +14,7 @@ let height = 1600
 
 let pos
 let angle = Math.PI / 2 // current angle
-let stepLength = 10
+let stepLength = 15
 let numSteps = 11
 let iteration = 0
 
@@ -57,6 +57,10 @@ function setup(ctx) {
 
 }
 
+function transformPerspective(pos) {
+    return pos.add(new Vector(0, 0))
+}
+
 async function draw(ctx, instruction) {
     console.log(iteration)
     if (iteration++ > numSteps) return
@@ -75,7 +79,8 @@ async function draw(ctx, instruction) {
         if (c == 'F') {
             await wait(10) // 'animate' drawing
             ctx.beginPath()
-            ctx.moveTo(pos.x, pos.y)
+            let to = transformPerspective(pos)
+            ctx.moveTo(to.x, to.y)
 
             let move = new Vector(
                 Math.cos(angle) * stepLength,
@@ -86,7 +91,8 @@ async function draw(ctx, instruction) {
             hue += 360 / (instruction.length / 2)
             ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
 
-            ctx.lineTo(pos.x, pos.y)
+            to = transformPerspective(pos)
+            ctx.lineTo(to.x, to.y)
             ctx.stroke()
         }
         if (c == '-') {
