@@ -100,15 +100,17 @@ async function draw(ctx, instruction) {
     // replace variables for next evolution
     let newInstr = '';
     for (let i=0; i < instruction.length; i++) {
-        let hasRule = false
+
+    }
+
+    newInstr = Array.from(instruction).map((symbol) => {
         for (let [match, replacement] of productionRules) {
-            if (instruction[i] == match) {
-                newInstr += replacement
-                hasRule = true
+            if (symbol == match) {
+                return replacement
             }
         }
-        if (!hasRule) newInstr += instruction[i]
-    }
+        return symbol
+    }).join('')
 
     // stepLength = map(iteration, 0, numSteps, 100, 7)
 
