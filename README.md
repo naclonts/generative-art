@@ -1,7 +1,7 @@
 # Art Experiments
 
-l-system.html   -   Lindenmayer system (dragon curve, to be precise)
-noise.html      -   perlin noise squiggles
+- l-system.html   -   Lindenmayer system (dragon curve, to be precise)
+- noise.html      -   perlin noise squiggles
 
 ### Lindenmayer System: Dragon curve
 
